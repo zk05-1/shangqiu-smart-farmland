@@ -5,6 +5,7 @@
 # Node / Vite
 框架/client/node_modules/
 框架/client/dist/
+文档/node_modules/
 
 # 上传文件
 uploads/
