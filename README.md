@@ -32,5 +32,7 @@ npm run dev
 
 ## 部署
 
-- 前端部署到 Vercel，后端部署到 Render
-- 详见 `render.yaml` 和 `框架/client/vercel.json`
+- 前端部署到 Vercel，后端部署到 Koyeb（Docker 容器），数据库使用 Neon（PostgreSQL）
+- 详见 `框架/server/Dockerfile` 和 `框架/client/vercel.json`
+- 后端通过环境变量 `SPRING_DATASOURCE_URL` 等注入数据库连接
+- 前端通过环境变量 `VITE_API_BASE_URL` 指向后端地址
