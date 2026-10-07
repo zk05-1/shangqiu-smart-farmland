@@ -1,0 +1,71 @@
+# ==========================================
+# 商丘市农业农村局智能农田管理系统 - 应用配置
+# ==========================================
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: smart-farmland-management
+
+  # 数据库配置 - 本地默认 MySQL，部署时通过环境变量切换为 PostgreSQL
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/shangqiu_farmland?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:123456}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER:com.mysql.cj.jdbc.Driver}
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      idle-timeout: 300000
+      max-lifetime: 1200000
+      connection-timeout: 30000
+
+  # JPA 配置
+  jpa:
+    hibernate:
+      ddl-auto: update  # 开发阶段使用update,生产环境改为validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: ${SPRING_JPA_HIBERNATE_DIALECT:org.hibernate.dialect.MySQLDialect}
+
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+
+  # Jackson JSON 配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null
+
+# ==========================================
+# JWT 配置
+# ==========================================
+jwt:
+  secret: ShangQiuNongYeNongCunJuZhiNengNongTianGuanLiXiTongSecretKey2024
+  expiration: 86400000  # 24小时 (毫秒)
+
+# ==========================================
+# 文件上传路径配置
+# ==========================================
+file:
+  upload:
+    path: ${FILE_UPLOAD_PATH:./uploads/}
+    max-size: 10485760  # 10MB
+
+# ==========================================
+# 日志配置
+# ==========================================
+logging:
+  level:
+    root: info
+    com.sqnu.server: debug
+    org.springframework.security: info

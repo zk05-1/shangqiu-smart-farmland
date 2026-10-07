@@ -1,0 +1,25 @@
+# Maven
+框架/server/target/
+框架/server/*.log
+
+# Node / Vite
+框架/client/node_modules/
+框架/client/dist/
+
+# 上传文件
+uploads/
+框架/server/uploads/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
